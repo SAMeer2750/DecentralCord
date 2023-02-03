@@ -1,0 +1,19 @@
+{
+  "name": "hardhat-project",
+  "version": "1.0.0",
+  "main": "hardhat.config.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/SAMeer2750/DecentralCord.git"
+  },
+  "author": "Sameer Madhav D",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/SAMeer2750/DecentralCord/issues"
+  },
+  "homepage": "https://github.com/SAMeer2750/DecentralCord#readme",
+  "description": ""
+}
