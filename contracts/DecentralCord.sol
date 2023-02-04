@@ -1,10 +1,16 @@
 // SPDX-License-Identifier: UNLICENSED
 pragma solidity ^0.8.17;
 
-contract discord{
+contract DecentralCord{
+
+    struct Profile{
+        address profileAdd;
+        string userName;
+    }
 
     struct Message{
         address sender;
+        string userName;
         string message;
         uint256 timeStamp;
     }
@@ -18,9 +24,9 @@ contract discord{
         uint256 serverId;
         string serverName;
         address Owner;
-
     }
 
+    mapping(address => Profile) public user;
     mapping(uint256 => Server) public servers;//server Id to Servers
     mapping(uint256 => Channel) public channels;//channel Id to Channels
     mapping(uint256 => Channel[]) public ServerChannels;//server Id to Channel
@@ -29,8 +35,20 @@ contract discord{
 
 
     Server[] allServers;
+    Profile[] Users;
     uint256 serverCount = 1;
     uint256 channelCount = 1;
+
+    function checkAddressExist(address _add)public view returns(bool){
+        return(bytes(user[_add].userName).length > 0);
+    }
+
+    function createAccount(string memory _userName) public {
+        require(!checkAddressExist(msg.sender) , "User Already Exist");
+        require(bytes(_userName).length > 8 , "User name must have more than 8 characters");
+        user[msg.sender] = Profile(msg.sender, _userName);
+        Users.push(Profile(msg.sender, _userName));
+    }
 
     function createServer(string memory _serverName)public{
         address owner = msg.sender;
@@ -69,5 +87,9 @@ contract discord{
     
     function getChannels(uint256 _serverId) public view returns(Channel[] memory) {
         return(ServerChannels[_serverId]);
+    }
+
+    function getServerMods(uint256 _serverId) public view returns(address[] memory){
+        return(moderators[_serverId]);
     }
 }
