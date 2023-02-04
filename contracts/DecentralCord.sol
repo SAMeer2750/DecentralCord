@@ -26,12 +26,13 @@ contract DecentralCord{
         address Owner;
     }
 
-    mapping(address => Profile) public user;
+    mapping(address => Profile) public user;//user address to profiles
     mapping(uint256 => Server) public servers;//server Id to Servers
     mapping(uint256 => Channel) public channels;//channel Id to Channels
     mapping(uint256 => Channel[]) public ServerChannels;//server Id to Channel
     mapping(address => Server[]) public UserServers;//user Address to servers
     mapping(uint256 => address[]) public moderators;//Server ID to moderators
+    mapping(uint256 => Message[]) public channelMessages;//channel Id to Messages
 
 
     Server[] allServers;
@@ -76,6 +77,12 @@ contract DecentralCord{
         }    
     }
 
+    function sendMessage(string memory _message, uint256 _channelId) public{
+        require(checkAddressExist(msg.sender) , "User doesnot exist Exist");
+        Message memory message = Message(msg.sender, user[msg.sender].userName, _message, block.timestamp);
+        channelMessages[_channelId].push(message);
+    }
+
     function enterServer(uint256 _serverId) public {
         uint256 ServerID = _serverId;
         UserServers[msg.sender].push(servers[ServerID]);
@@ -91,5 +98,9 @@ contract DecentralCord{
 
     function getServerMods(uint256 _serverId) public view returns(address[] memory){
         return(moderators[_serverId]);
+    }
+
+    function getChannelMessages(uint256 _channelId) public view returns(Message[] memory) {
+        return(channelMessages[_channelId]);
     }
 }
