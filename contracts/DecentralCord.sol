@@ -3,6 +3,8 @@ pragma solidity ^0.8.17;
 
 contract DecentralCord{
 
+    error DecentralCord__NoAccess();
+
     struct Profile{
         address profileAdd;
         string userName;
@@ -30,9 +32,11 @@ contract DecentralCord{
     mapping(uint256 => Server) public servers;//server Id to Servers
     mapping(uint256 => Channel) public channels;//channel Id to Channels
     mapping(uint256 => Channel[]) public ServerChannels;//server Id to Channel
+    mapping(uint256 => uint256) public ChannelServer;//channel Id to Server
     mapping(address => Server[]) public UserServers;//user Address to servers
     mapping(uint256 => address[]) public moderators;//Server ID to moderators
     mapping(uint256 => Message[]) public channelMessages;//channel Id to Messages
+    mapping(uint256 => Profile[]) public serverMembers;//serverID to Profiles
 
 
     Server[] allServers;
@@ -40,12 +44,24 @@ contract DecentralCord{
     uint256 serverCount = 1;
     uint256 channelCount = 1;
 
-    function checkAddressExist(address _add)public view returns(bool){
+    function checkAddressAlreadyExist(address _add)public view returns(bool){
         return(bytes(user[_add].userName).length > 0);
     }
 
+    function isInServer(uint256 _channelId) public view returns (bool) {
+        uint256 serverId =  ChannelServer[_channelId];
+        Profile[] memory members = serverMembers[serverId];
+        for (uint256 i = 0; i < members.length; i++) {
+            if (members[i].profileAdd == msg.sender) {
+                return true;
+            }
+        }
+    return false;
+    }
+
+
     function createAccount(string memory _userName) public {
-        require(!checkAddressExist(msg.sender) , "User Already Exist");
+        require(!checkAddressAlreadyExist(msg.sender) , "User Already Exist");
         require(bytes(_userName).length > 8 , "User name must have more than 8 characters");
         user[msg.sender] = Profile(msg.sender, _userName);
         Users.push(Profile(msg.sender, _userName));
@@ -56,12 +72,14 @@ contract DecentralCord{
         uint256 serverId = serverCount;
         Server memory server = Server(serverId, _serverName, owner); 
         servers[serverId] = server;
+        enterServer(serverId);
         allServers.push(server);
         serverCount++;
     }
 
     function addModerators(address _mod, uint256 _serverId) public {
         require(msg.sender == servers[_serverId].Owner , "You do not have the access to create channel");
+        UserServers[_mod].push(servers[_serverId]);
         moderators[_serverId].push(_mod);
     }
     
@@ -72,13 +90,18 @@ contract DecentralCord{
                 Channel memory channel = Channel(channelId, _channelName);
                 channels[channelId] = channel;
                 ServerChannels[_serverId].push(channel);
+                ChannelServer[channelId] = _serverId;
                 channelCount++;
+            }
+            else{
+                revert DecentralCord__NoAccess();
             }
         }    
     }
 
     function sendMessage(string memory _message, uint256 _channelId) public{
-        require(checkAddressExist(msg.sender) , "User doesnot exist Exist");
+        require(checkAddressAlreadyExist(msg.sender) , "User doesnot exist Exist");
+        require(isInServer(_channelId), "your not in the server");
         Message memory message = Message(msg.sender, user[msg.sender].userName, _message, block.timestamp);
         channelMessages[_channelId].push(message);
     }
@@ -86,6 +109,7 @@ contract DecentralCord{
     function enterServer(uint256 _serverId) public {
         uint256 ServerID = _serverId;
         UserServers[msg.sender].push(servers[ServerID]);
+        serverMembers[_serverId].push(user[msg.sender]);
     }
 
     function getAllServers() public view returns(Server[] memory){
@@ -98,6 +122,10 @@ contract DecentralCord{
 
     function getServerMods(uint256 _serverId) public view returns(address[] memory){
         return(moderators[_serverId]);
+    }
+
+    function getServerMembers(uint256 _serverId) public view returns(Profile[] memory){
+        return(serverMembers[_serverId]);
     }
 
     function getChannelMessages(uint256 _channelId) public view returns(Message[] memory) {
