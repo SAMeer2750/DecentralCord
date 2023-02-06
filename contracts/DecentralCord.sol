@@ -15,6 +15,9 @@ contract DecentralCord{
         string userName;
         string message;
         uint256 timeStamp;
+        uint256 msgId;
+        bool deleted;
+        uint256 noOfReports;
     }
     
     struct Channel{
@@ -37,6 +40,9 @@ contract DecentralCord{
     mapping(uint256 => address[]) public moderators;//Server ID to moderators
     mapping(uint256 => Message[]) public channelMessages;//channel Id to Messages
     mapping(uint256 => Profile[]) public serverMembers;//serverID to Profiles
+    mapping(uint256 => Message) public message;//msg Id to Message
+    mapping(uint256 => uint256) public messageChannel;//msg Id to channel ID;
+    mapping(address => mapping(uint256 => bool)) public ifAddReported;//Address to msgId to Bool(if reported)
 
 
     Server[] allServers;
@@ -57,7 +63,7 @@ contract DecentralCord{
             }
         }
     return false;
-    }
+   }
 
 
     function createAccount(string memory _userName) public {
@@ -81,11 +87,12 @@ contract DecentralCord{
         require(msg.sender == servers[_serverId].Owner , "You do not have the access to create channel");
         UserServers[_mod].push(servers[_serverId]);
         moderators[_serverId].push(_mod);
+        enterServer(_serverId);
     }
     
     function createChannel(string memory _channelName, uint256 _serverId) public {
         for(uint256 i = 0 ; i < moderators[_serverId].length ; i++){
-            if(msg.sender == servers[_serverId].Owner ||msg.sender == moderators[_serverId][i]){
+            if((msg.sender == servers[_serverId].Owner) || (msg.sender == moderators[_serverId][i])){
                 uint256 channelId = channelCount;
                 Channel memory channel = Channel(channelId, _channelName);
                 channels[channelId] = channel;
@@ -93,17 +100,38 @@ contract DecentralCord{
                 ChannelServer[channelId] = _serverId;
                 channelCount++;
             }
-            else{
-                revert DecentralCord__NoAccess();
-            }
-        }    
+        }
+        revert DecentralCord__NoAccess();    
     }
 
     function sendMessage(string memory _message, uint256 _channelId) public{
         require(checkAddressAlreadyExist(msg.sender) , "User doesnot exist Exist");
         require(isInServer(_channelId), "your not in the server");
-        Message memory message = Message(msg.sender, user[msg.sender].userName, _message, block.timestamp);
-        channelMessages[_channelId].push(message);
+        uint256 _msgId = channelMessages[_channelId].length + 1;
+        Message memory Msg = Message(msg.sender, user[msg.sender].userName, _message, block.timestamp, _msgId,false,0);
+        channelMessages[_channelId].push(Msg);
+        messageChannel[_msgId] = (_channelId);
+        message[_msgId] = Msg;
+    }
+
+    function deleteMessage(uint256 _msgId) internal {
+        message[_msgId].message="This Message has been removed by admin";
+        message[_msgId].deleted = true;
+    }
+
+    function ReportMessage(uint256 _msgId) public{
+         uint256 channelId = messageChannel[_msgId];
+         uint256 serverId = ChannelServer[channelId];
+        for(uint256 i = 0 ; i < moderators[serverId].length ; i++){
+            if((msg.sender == servers[serverId].Owner || msg.sender == moderators[serverId][i]) && (ifAddReported[msg.sender][_msgId] = false)){
+                message[_msgId].noOfReports++; 
+                ifAddReported[msg.sender][_msgId] = true;
+                if(message[_msgId].noOfReports >= ((moderators[serverId].length + 1)*8)/10){
+                    deleteMessage(_msgId);
+                }
+            }
+        }
+        revert DecentralCord__NoAccess();    
     }
 
     function enterServer(uint256 _serverId) public {
