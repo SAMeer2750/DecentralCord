@@ -123,12 +123,22 @@ contract DecentralCord{
         channelMessages[messageChannel[_msgId]][_msgId] = Msg;
     }
 
+    // function ReportMessage(uint256 _msgId) public{
+    //     uint256 channelId = messageChannel[_msgId];
+    //     for(uint256 i = 0 ; i < moderators[ChannelServer[channelId]].length ; i++){
+    //         if(msg.sender == servers[ChannelServer[channelId]].Owner ||msg.sender == moderators[ChannelServer[channelId]][i]){
+    //             msgReports[_msgId] = msgReports[_msgId] + 1;
+    //             if(msgReports[_msgId] > (moderators[ChannelServer[channelId]].length*8)/10){
+    //                 deleteMessage(_msgId);
+    //             }
+    //         }
+    //     }
+    // }
     function ReportMessage(uint256 _msgId) public{
-        uint256 channelId = messageChannel[_msgId];
-        for(uint256 i = 0 ; i < moderators[ChannelServer[channelId]].length ; i++){
-            if(msg.sender == servers[ChannelServer[channelId]].Owner ||msg.sender == moderators[ChannelServer[channelId]][i]){
+        for (uint256 i = 0 ; i < moderators[ChannelServer[messageChannel[_msgId]]].length ; i++) {
+            if(msg.sender == moderators[ChannelServer[messageChannel[_msgId]]][i]){
                 msgReports[_msgId] = msgReports[_msgId] + 1;
-                if(msgReports[_msgId] >= (moderators[ChannelServer[channelId]].length*8)/10){
+                if(msgReports[_msgId] > ((moderators[ChannelServer[messageChannel[_msgId]]].length*8)/10)){
                     deleteMessage(_msgId);
                 }
             }
