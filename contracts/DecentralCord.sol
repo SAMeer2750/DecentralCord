@@ -3,8 +3,6 @@ pragma solidity ^0.8.17;
 
 contract DecentralCord{
 
-    error DecentralCord__NoAccess();
-
     struct Profile{
         address profileAdd;
         string userName;
