@@ -15,5 +15,8 @@
     "url": "https://github.com/SAMeer2750/DecentralCord/issues"
   },
   "homepage": "https://github.com/SAMeer2750/DecentralCord#readme",
-  "description": ""
+  "description": "",
+  "devDependencies": {
+    "@nomicfoundation/hardhat-toolbox": "^2.0.1"
+  }
 }

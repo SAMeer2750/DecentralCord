@@ -3,7 +3,6 @@ pragma solidity ^0.8.17;
 
 contract DecentralCord{
 
-
     struct Profile{
         address profileAdd;
         string userName;
@@ -43,8 +42,6 @@ contract DecentralCord{
     mapping(uint256 => uint256) public messageChannel; // msg Id to channel ID;
     mapping(address => mapping(uint256 => bool)) public ifAddReported;//Address to msgId to Bool(if reported)
 
-
-
     Server[] allServers;
     Profile[] Users;
     uint256 serverCount = 1;
@@ -63,8 +60,7 @@ contract DecentralCord{
             }
         }
         return false;
-   }
-
+    }
 
     function createAccount(string memory _userName) public {
         require(!checkAddressAlreadyExist(msg.sender) , "User Already Exist");
@@ -161,4 +157,5 @@ contract DecentralCord{
     function getChannelMessages(uint256 _channelId) public view returns(Message[] memory) {
         return(channelMessages[_channelId]);
     }
+
 }
