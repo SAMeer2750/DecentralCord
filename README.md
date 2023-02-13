@@ -8,6 +8,9 @@
 - [Ethers.js](https://docs.ethers.io/v5/) (Blockchain Interaction)
 - [React.js](https://reactjs.org/) (Frontend Framework)
 
+## Contract Deployed on MantleTestNet
+- 0xa6804D82C921ad3dE98778cd6088cFf01acf4637
+
 ## Requirements For Initial Setup
 - Install [NodeJS](https://nodejs.org/en/)
 
