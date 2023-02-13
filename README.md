@@ -1,4 +1,4 @@
-# Real Estate NFT DApp
+# DecentralCord  -- Decentral Discord
 
 ## Technology Stack & Tools
 

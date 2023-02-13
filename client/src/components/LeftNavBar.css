@@ -1,0 +1,32 @@
+.LeftNavBar{
+    display: flex;
+}
+
+.LeftNavBar .greyBox{
+    background-color: #36393F;
+    width: 0.5rem;
+}
+
+.LeftNavBar .ContentBox img{
+    width: 3.7rem;
+    padding-bottom: 1rem;
+}
+
+.LeftNavBar .ContentBox .logo img{
+    padding-top: 1rem;
+}
+
+.LeftNavBar .ContentBox .serversIcons, .systemSett, .logo{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.LeftNavBar .ContentBox{
+    background-color: black;
+    width: 4.7rem;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}

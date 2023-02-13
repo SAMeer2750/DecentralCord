@@ -1,0 +1,12 @@
+.SignUp .SignUpBackground{
+    width: 100%;
+    height: 100%;
+    position: absolute;
+}
+
+.SignUp .SignUpContent{
+    height: 100vh;
+    width: 37%;
+    margin: auto;
+}
+
