@@ -1,0 +1,26 @@
+.JoinServer {
+    background-image: url("./bg_img.png");
+    height: 100vh;
+    display: flex;
+    background-size: cover;
+}
+
+.JoinServer .serverBoxes{
+    display: flex;
+}
+
+.JoinServer .vl {
+    border-left: 2px solid grey;
+    height: auto;
+  }
+
+.JoinServer .serverBox .allItems{
+    display: flex;
+    color: white;
+    width: max-content;
+    flex-direction: column;
+    background-color: black;
+    margin-left: 80%;
+    margin-top: 25%;
+    /* margin-right: auto; */
+}
