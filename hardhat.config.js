@@ -1,6 +1,22 @@
 require("@nomicfoundation/hardhat-toolbox");
+require("dotenv").config()
 
-/** @type import('hardhat/config').HardhatUserConfig */
+P_K = process.env.PRIVATE_KEY;
+
 module.exports = {
-  solidity: "0.8.17",
-};
+    solidity: {
+        compilers: [
+            {
+                version: "0.8.17",
+            },
+        ],
+    },
+    networks: {
+      hardhat: {},
+      mantle: {
+          url: "https://rpc.testnet.mantle.xyz/",
+          accounts: [P_K],
+          chainId: 5001,
+      },
+    },
+}  
