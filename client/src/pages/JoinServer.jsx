@@ -17,7 +17,7 @@ function JoinServer() {
               {/* eslint-disable-next-line */}
               <img src={require("./Icons/logo2.png")} />
               <h2>Create your own Server:</h2>
-              <input type="text" />
+              <input type="text" placeholder="Enter Server Name"/>
               <button>Create</button>
             </div>
             <div class="vl"></div>
@@ -25,7 +25,7 @@ function JoinServer() {
               {/* eslint-disable-next-line */}
               <img src={require("./Icons/join_server_icon.png")} />
               <h2>Join Server:</h2>
-              <input type="text" />
+              <input type="text" placeholder="Enter Server ID"/>
               <button>Enter</button>
             </div>
           </div>
