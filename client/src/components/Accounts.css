@@ -1,0 +1,43 @@
+.Accounts{
+    background-color: black;
+    color: white;
+    min-height: 100vh;
+    max-height: max-content;
+    width: 12rem;
+    border-left: solid 1px grey;
+    padding-left: 1rem;
+}
+
+.Accounts input{
+    margin-top: 0.5rem;
+    padding: 0.25rem;
+    border-radius: 25px;
+    width: 90%;
+    height: 1.8rem;
+    border: none;
+    background-color: #202225;
+    color: white;
+}
+
+.Accounts input::placeholder{
+    color: #B9BBBE;
+    padding-left: 0.5rem;
+    font-size: 1.05rem;
+}
+
+.Accounts .admin p.head, .moderators p.head, .members p.head{
+    padding-left: 1.5rem;
+    font-weight: 600;
+}
+
+.Accounts .moderators p.head{
+    color: yellow;
+}
+
+.Accounts .admin p.head{
+    color: red;
+}
+
+.Accounts .members p.head{
+    color: rgb(0, 102, 255);
+}
