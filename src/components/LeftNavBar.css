@@ -1,0 +1,33 @@
+.LeftNavBar {
+  display: flex;
+}
+
+.LeftNavBar .ContentBox img {
+  width: 3.7rem;
+  padding-bottom: 1rem;
+}
+
+.LeftNavBar .ContentBox img:hover {
+  width: 4rem;
+}
+
+.LeftNavBar .ContentBox .logo img {
+  padding-top: 1rem;
+}
+
+.LeftNavBar .ContentBox .serversIcons,
+.systemSett,
+.logo {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.LeftNavBar .ContentBox {
+  background-color: black;
+  width: 6vw;
+  /* height: 100vh; */
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}

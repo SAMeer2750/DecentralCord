@@ -1,0 +1,59 @@
+.Chating {
+  background-color: black;
+}
+
+.Chating .ChatBox {
+  color: white;
+  max-width: 60vw;
+  min-width: 60vw;
+  min-height: 100vh;
+  padding-left: 0.5rem;
+  padding-right: 0.5rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.Chating .ChatBox input {
+  width: 70%;
+  color: white;
+  /* margin-left: auto;
+  margin-right: auto; */
+  display: flex;
+  margin-top: 1rem;
+  background-color: #36393f;
+  border: none;
+  padding: 0.75rem;
+  border-radius: 25px;
+}
+
+.Chating .ChatBox .sendMessage{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.Chating .ChatBox .sendMessage img, .chatBoxUp img {
+  width: 2rem;
+  height: 2rem;
+  margin-left: 0.5rem;
+  margin-top: 0.5rem;
+}
+
+.Chating .ChatBox .sendMessage img:hover, .chatBoxUp img:hover {
+  width: 2.2rem;
+  height: 2.2rem;
+}
+
+.Chating .ChatBox input#down {
+  margin-bottom: 1.5rem;
+  margin-top: 2rem;
+}
+
+.Chating .ChatBox .chatBoxUp{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}

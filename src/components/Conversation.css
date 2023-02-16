@@ -1,0 +1,37 @@
+.Conversation {
+  margin-top: 1rem;
+  margin-bottom: 0.5rem;
+  border: 1px solid rgba(128, 128, 128, 0.24);
+  padding: 0.75rem;
+  padding-top: 0.5rem;
+}
+
+
+.Conversation .about {
+  display: flex;
+  align-items: center;
+  color: yellow;
+  font-size: large;
+  font-weight: 600;
+}
+
+.Conversation .about img {
+  width: 2.7rem;
+  height: 2.7rem;
+}
+
+.Conversation .about p {
+  margin-left: 0.5rem;
+  margin-top: 0.35rem;
+}
+
+.Conversation .about p#time {
+  font-weight: 300;
+  font-size: small;
+  color: white;
+  margin-top: 0.25rem;
+}
+
+.Conversation .message {
+  margin-left: 3.5rem;
+}

@@ -1,0 +1,20 @@
+.User .userBox {
+  display: flex;
+  width: auto;
+  align-items: center;
+  justify-content: left;
+}
+
+.User .userBox:hover{
+    border: 1px solid rgb(255, 242, 64);
+    border-radius: 25px;
+}
+
+.User .userBox img {
+  width: 2.35rem;
+  height: 2.35rem;
+}
+
+.User .userBox p{
+    padding-left: 1rem;
+}
