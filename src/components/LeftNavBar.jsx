@@ -24,7 +24,6 @@ function LeftNavBar() {
           <img src={require("./Icons/icon_setting.png")} />
         </div>
       </div>
-      <div className="greyBox"></div>
     </div>
   );
 }

@@ -1,0 +1,96 @@
+.ServerDetails{
+    width: 20vw;
+    background-color: #202225;
+    border-right: 0.5rem solid #36393F;
+    border-left: 0.5rem solid #36393F;
+    color: white;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.ServerDetails .serverName{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.ServerDetails .name{
+    width: max-content;
+    padding: 1rem;
+    padding-left: 2rem;
+    padding-right: 2rem;
+    margin-top: 0.75rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    /* border: 3px solid white; */
+    background-color: #36393F;
+    border-radius: 10px;
+}
+
+.ServerDetails .name p{
+    margin: 0;
+    margin-left: 0.5rem;
+    font-size: larger;
+    font-weight: 700;
+}
+
+.ServerDetails .name img#fir{
+    width: 1.3rem;
+    height: 1.3rem;
+}
+
+.ServerDetails .channels{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.ServerDetails img#sec{
+    width: 16vw;
+    margin-top: 1rem;
+}
+
+.ServerDetails .channels button{
+    color: white;
+    background-color: #36393F;
+    width: max-content;
+    padding: 1rem;
+    padding-left: 2rem;
+    padding-right: 2rem;
+    margin-top: 0.75rem;
+    border: none;
+    border-radius: 10px;
+}
+
+.ServerDetails .profile{
+    display: flex;
+    width: 19vw;
+    align-items: center;
+    justify-content: left;
+    background-color: #36393F;
+    /* height: 10vh; */
+    height: 4rem;
+}
+
+.ServerDetails .profile img{
+    width: 3rem;
+    height: 3rem;
+    margin-right: 1rem;
+    margin-left: 0.25rem;
+}
+
+.ServerDetails .profile p.UserName{
+    font-size: large;
+    font-weight: 500;
+    margin: 0;
+}
+
+.ServerDetails .profile p.address{
+    font-size: small;
+    font-weight: 500;
+    margin: 0;
+    margin-top: 0.25rem;
+}

@@ -1,6 +1,6 @@
 .User .userBox {
   display: flex;
-  width: 9rem;
+  width: auto;
   align-items: center;
   justify-content: left;
 }

@@ -1,16 +1,19 @@
-import React from 'react'
-import "./Chat.css"
-import Accounts from '../components/Accounts'
-// import LeftNavBar from "../components/LeftNavBar"
+import React from "react";
+import "./Chat.css";
+import Accounts from "../components/Accounts";
+import LeftNavBar from "../components/LeftNavBar";
+import Chating from "../components/Chating";
+import ServerDetails from "../components/ServerDetails";
 
 function Chat() {
   return (
-    <>
-    {/* <LeftNavBar/> */}
-    {/* <div className='Chat'>Chat</div> */}
-    <Accounts/>
-    </>
-  )
+    <div className="Chat">
+      <LeftNavBar />
+      <ServerDetails/>
+      <Chating/>
+      <Accounts />
+    </div>
+  );
 }
 
-export default Chat
+export default Chat;
