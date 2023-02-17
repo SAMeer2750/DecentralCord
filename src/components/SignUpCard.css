@@ -66,9 +66,21 @@ h1 {
 .SignUpCard .SignUpCardBox button#connect_wallet{
   background-color: #5865f2;
   color: rgb(255, 255, 255);
-  width: 45%;
+  width: 100%;
   padding: 0.5rem;
+  padding-left: 1rem;
+  padding-right: 1rem;
   font-family: 'Poppins', sans-serif;
   border: none;
   border-radius: 10px;
+}
+
+.SignUpCard .SignUpCardBox button#sign_up {
+  background-color: #5865f2;
+  color: rgb(255, 255, 255);
+  width: 100%;
+
+  padding-left: 13.3rem;
+  padding-right: 13.3rem;
+  font-family: 'Poppins', sans-serif;
 }
