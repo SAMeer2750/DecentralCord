@@ -4,15 +4,15 @@ import "./ServerDetails.css";
 function ServerDetails() {
   return (
     <div className="ServerDetails">
+      <div className="image">
+          {/* eslint-disable-next-line */}
+          <img id="sec" src={require("./Icons/Banner.png")} />
+        </div>
       <div className="serverName">
         <div className="name">
           {/* eslint-disable-next-line */}
           <img id="fir" src={require("./Icons/Badge.png")} />
           <p>EthForAll</p>
-        </div>
-        <div className="image">
-          {/* eslint-disable-next-line */}
-          <img id="sec" src={require("./Icons/Banner.png")} />
         </div>
       </div>
 
