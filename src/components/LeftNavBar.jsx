@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import "./LeftNavBar.css";
 
 function LeftNavBar() {
@@ -19,7 +20,7 @@ function LeftNavBar() {
         </div>
         <div className="systemSett">
           {/* eslint-disable-next-line */}
-          <img src={require("./Icons/icon_createServer.png")} />
+          <Link to={"/JoinServer"}><img src={require("./Icons/icon_createServer.png")} /></Link>
           {/* eslint-disable-next-line */}
           <img src={require("./Icons/icon_setting.png")} />
         </div>

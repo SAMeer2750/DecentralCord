@@ -3,6 +3,7 @@ import { BrowserRouter, Routes, Route } from "react-router-dom"
 import SignUp from "./pages/SignUp"
 import JoinServer from "./pages/JoinServer"
 import Chat from "./pages/Chat"
+import Profile from "./pages/Profile"
 import { ethers } from "ethers"
 import { useState, useEffect } from "react"
 
@@ -721,6 +722,7 @@ function App() {
                     />
                     <Route path="Chat" element={<Chat />} />
                     <Route path="JoinServer" element={<JoinServer />} />
+                    <Route path="Profile" element={<Profile/>} />
                 </Routes>
             </BrowserRouter>
         </div>

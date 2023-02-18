@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import "./ServerDetails.css";
 
 function ServerDetails() {
@@ -24,7 +25,9 @@ function ServerDetails() {
       </div>
       <div className="profile">
         {/* eslint-disable-next-line */}
-        <img src={require("./Icons/Profile_Picture.png")} />
+        <Link to={'/Profile'}>
+          <img src={require("./Icons/Profile_Picture.png")} />
+        </Link>
         <div className="aboutUser">
           <p className="UserName">First Last</p>
           <p className="address">0x123...123</p>
