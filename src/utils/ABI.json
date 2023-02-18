@@ -1,25 +1,4 @@
-import "./App.css"
-import { BrowserRouter, Routes, Route } from "react-router-dom"
-import SignUp from "./pages/SignUp"
-import JoinServer from "./pages/JoinServer"
-import Chat from "./pages/Chat"
-import { ethers } from "ethers"
-import { useState, useEffect } from "react"
-
-
-function App() {
-    const [provider, setProvider] = useState(null)
-    const [account, setAccount] = useState(null)
-    const [contract, setContract]  = useState(null)
-
-    const LoadBlockchainData = async () => {
-        const provider = new ethers.providers.Web3Provider(window.ethereum)
-        setProvider(provider)
-        const network = await provider.getNetwork()
-
-        const contract = new ethers.Contract(
-          "0xa6804D82C921ad3dE98778cd6088cFf01acf4637",
-          [
+[
 			{
 				"inputs": [
 					{
@@ -693,38 +672,4 @@ function App() {
 				"stateMutability": "view",
 				"type": "function"
 			}
-		],
-          provider
-        )
-        setContract(contract)
-
-        window.ethereum.on("accountChanged", async () => {
-            const accounts = await window.ethereum.request({
-                method: "eth_requestAccounts",
-            })
-            const account = ethers.utils.getAddress(accounts[0])
-            setAccount(account)
-        })
-    }
-
-    useEffect(()=>{
-      LoadBlockchainData()
-    },[])
-
-    return (
-        <div className="App">
-            <BrowserRouter>
-                <Routes>
-                    <Route
-                        path="/"
-                        element={<SignUp account={account} setAccount={setAccount} contract={contract} setContract={setContract}/>}
-                    />
-                    <Route path="Chat" element={<Chat />} />
-                    <Route path="JoinServer" element={<JoinServer />} />
-                </Routes>
-            </BrowserRouter>
-        </div>
-    )
-}
-
-export default App
+		]
