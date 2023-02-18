@@ -33,4 +33,4 @@ In a separate terminal execute:
 ### 7. Start frontend
 `$ npm run start`
 ### Design Prototype:
-[view Designs](https://bit.ly/3k21JrT)
+[View Designs](https://bit.ly/3k21JrT)
