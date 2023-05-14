@@ -3,6 +3,7 @@ import "./SignUp.css";
 import SignUpCard from "../components/SignUpCard";
 
 function SignUp({account,setAccount,contract, setContract}) {
+
   return (
     <div className="SignUp">
       <img className="SignUpBackground" src="./bg_img.png" alt="" />

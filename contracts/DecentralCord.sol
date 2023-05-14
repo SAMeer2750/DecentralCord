@@ -158,4 +158,8 @@ contract DecentralCord{
         return(channelMessages[_channelId]);
     }
 
+    function getUser() public view returns(string memory){
+        return(user[msg.sender].userName);
+    }
+
 }

@@ -1,22 +1,26 @@
-import React from "react";
+import React, { useState } from "react";
 import "./SignUpCard.css";
 import { Link } from "react-router-dom";
 import { ethers } from 'ethers';
 
 function SignUpCard({account,setAccount,contract, setContract}) {
 
+  const [userName, setUserName] = useState(null);
+
   const connectHandler = async()=>{
     const accounts = await window.ethereum.request({ method: 'eth_requestAccounts' });
     const account = ethers.utils.getAddress(accounts[0])
     setAccount(account);
   }
-  // const signInButton = document.getElementById("sign_up");
-  // signInButton.addEventListener("click", handleSignIn);
-  // const handleSignIn = async ()=>{
-  //   const usernameInput = document.querySelector('input[type="text"]').value;
-  //   const enterServer = await contract.enterServer(usernameInput).send({ from: account })
-  // }
-  // signInButton.addEventListener("click", handleSignIn);
+
+    function changetext(e) {
+    setUserName(e.target.value);
+  }
+
+  const createUser = async () => {
+    const tx = await contract.createAccount(userName);
+    await tx.wait();
+  }
 
   return (
 
@@ -26,8 +30,8 @@ function SignUpCard({account,setAccount,contract, setContract}) {
         <img src={require("./image_3.png")} />
         <h1 id="head">Sign In</h1>
         <div className="tagline"><p id="statement">Hurry, Sign in to become a part of Decentral Cord's family.</p></div>
-        <input type="text" id="username" placeholder="Username" />
-        <Link to="/Chat"><button id="sign_up">Sign In</button></Link>
+        <input type="text" id="username" placeholder="Username" onChange={changetext}/>
+        <button id="sign_up" onClick={createUser}>Sign In</button>
 
         <hr />
 

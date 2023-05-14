@@ -1,8 +1,21 @@
-import React from "react";
+import React, { useState } from "react";
 import "./JoinServer.css";
 import LeftNavBar from "../components/LeftNavBar";
 
-function JoinServer() {
+function JoinServer({ account,contract,user }) {
+
+  const [serverName, setServerName] = useState("")
+
+  function changetext(e) {
+    setServerName(e.target.value);
+  }
+
+  const createServer = async ()=>{
+    const createServerTx = await contract.createServer(serverName);
+    await createServerTx.wait();
+    setServerName("")
+  }
+
   return (
     <div className="JoinServer">
       <LeftNavBar />
@@ -17,8 +30,8 @@ function JoinServer() {
               {/* eslint-disable-next-line */}
               <img src={require("./Icons/logo2.png")} />
               <h2>Create your own Server:</h2>
-              <input type="text" placeholder="Enter Server Name"/>
-              <button>Create</button>
+              <input type="text" placeholder="Enter Server Name"onChange={changetext}/>
+              <button onClick={createServer}>Create</button>
             </div>
             <div class="vl"></div>
             <div className="joinserver">

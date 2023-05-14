@@ -1,8 +1,9 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import "./ServerDetails.css";
 
-function ServerDetails() {
+function ServerDetails({account,contract,user}) {
+
   return (
     <div className="ServerDetails">
       <div className="image">
@@ -29,8 +30,9 @@ function ServerDetails() {
           <img src={require("./Icons/Profile_Picture.png")} />
         </Link>
         <div className="aboutUser">
-          <p className="UserName">First Last</p>
-          <p className="address">0x123...123</p>
+          {/* <p className="UserName">{contract.users(account)}</p> */}
+          <p className="UserName">{user}</p>
+          <p className="address">{account.slice(0, 6) + '...' + account.slice(38, 42)}</p>
         </div>
       </div>
     </div>

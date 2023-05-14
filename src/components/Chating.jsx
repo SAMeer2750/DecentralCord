@@ -2,7 +2,7 @@ import React from "react";
 import "./Chating.css";
 import Conversation from "./Conversation";
 
-function Chating() {
+function Chating({user}) {
   return (
     <div className="Chating">
       <div className="ChatBox">
@@ -11,9 +11,9 @@ function Chating() {
           <img src="https://cdn-icons-png.flaticon.com/512/9135/9135995.png" alt="" />
         </div>
         <div className="chatBoxDown">
-          <Conversation />
-          <Conversation />
-          <Conversation />
+          <Conversation user={user}/>
+          <Conversation user={user}/>
+          <Conversation user={user}/>
           <div className="sendMessage">
           <input id="down" type="text" placeholder="Your message goes here.."/>
           <img src="https://cdn-icons-png.flaticon.com/512/2099/2099122.png" alt="" />
