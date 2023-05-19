@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import "./ServerDetails.css";
 
-function ServerDetails({account,contract,user}) {
+function ServerDetails({account,user}) {
 
   return (
     <div className="ServerDetails">
@@ -30,7 +30,6 @@ function ServerDetails({account,contract,user}) {
           <img src={require("./Icons/Profile_Picture.png")} />
         </Link>
         <div className="aboutUser">
-          {/* <p className="UserName">{contract.users(account)}</p> */}
           <p className="UserName">{user}</p>
           <p className="address">{account.slice(0, 6) + '...' + account.slice(38, 42)}</p>
         </div>

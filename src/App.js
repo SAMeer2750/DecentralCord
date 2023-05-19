@@ -14,11 +14,7 @@ function App() {
     const [account, setAccount] = useState(null)
     const [contract, setContract]  = useState(null)
     const [user, setUser] = useState(null)
-
-    const getUserData = async () => {
-        const tx = await contract.getUser()
-        setUser(tx)
-    }
+    const [userServers, setUserServers] = useState(null)
 
     const LoadBlockchainData = async () => {
         const provider = new ethers.providers.Web3Provider(window.ethereum)
@@ -37,10 +33,21 @@ function App() {
 		setContract(Contract);
     }
 
+    const getUserData = async () => {
+        const tx = await contract.getUser();
+        setUser(tx);
+    }
+
+    const getUserServers = async () => {
+        const getUserServerTx = await contract.getUserServers()
+        setUserServers(getUserServerTx)
+        console.log(userServers)
+    }
+
     useEffect(()=>{
         LoadBlockchainData()
-        getUserData()
-    })
+        // getUserData()
+    },[])
 
     return (
         <div className="App">
@@ -49,12 +56,7 @@ function App() {
                     <Route
                         path="/"
                         element={
-                            <SignUp
-                                account={account}
-                                setAccount={setAccount}
-                                contract={contract}
-                                setContract={setContract}
-                            />
+                            <SignUp account={account} setAccount={setAccount} contract={contract} />
                         }
                     />
                     <Route
@@ -66,6 +68,7 @@ function App() {
                                 user={user}
                                 setUSer={setUser}
                                 getUserData={getUserData}
+                                getUserServers={getUserServers}
                             />
                         }
                     />
@@ -73,7 +76,7 @@ function App() {
                         path="JoinServer"
                         element={<JoinServer account={account} contract={contract} user={user} />}
                     />
-                    <Route path="Profile" element={<Profile />} />
+                    <Route path="Profile" element={<Profile account={account} user={user} />} />
                 </Routes>
             </BrowserRouter>
         </div>

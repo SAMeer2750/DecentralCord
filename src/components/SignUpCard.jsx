@@ -3,7 +3,7 @@ import "./SignUpCard.css";
 import { Link } from "react-router-dom";
 import { ethers } from 'ethers';
 
-function SignUpCard({account,setAccount,contract, setContract}) {
+function SignUpCard({account,setAccount,contract}) {
 
   const [userName, setUserName] = useState(null);
 

@@ -1,5 +1,5 @@
 // SPDX-License-Identifier: UNLICENSED
-pragma solidity ^0.8.17;
+pragma solidity ^0.8.7;
 
 contract DecentralCord{
 
@@ -83,8 +83,8 @@ contract DecentralCord{
         require(msg.sender == servers[_serverId].Owner , "You do not have the access");
         UserServers[_mod].push(servers[_serverId]);
         moderators[_serverId].push(_mod);
-        uint256 ServerID = _serverId;
-        UserServers[_mod].push(servers[ServerID]);
+        // uint256 ServerID = _serverId;
+        // UserServers[_mod].push(servers[ServerID]);
         serverMembers[_serverId].push(user[_mod]);
     }
     
@@ -160,6 +160,10 @@ contract DecentralCord{
 
     function getUser() public view returns(string memory){
         return(user[msg.sender].userName);
+    }
+
+    function getUserServers() public view returns(Server[] memory){
+        return(UserServers[msg.sender]);
     }
 
 }

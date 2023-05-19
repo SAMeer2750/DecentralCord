@@ -12,7 +12,7 @@
 - 0xa6804D82C921ad3dE98778cd6088cFf01acf4637
 
 ## Contract Deployed on PolygonTestNet
-- 0x6C925A3977456da890204b49F2852A378CF5F786
+- 0x216f2C21B9852F53BFD6fb18d84A47EFFacC211A
 
 ## Requirements For Initial Setup
 - Install [NodeJS](https://nodejs.org/en/)

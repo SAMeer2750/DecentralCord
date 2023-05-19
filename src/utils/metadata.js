@@ -1,4 +1,4 @@
-const contractAddress = "0x9f3550658250e4781EA9560732E3f23775E10340"
+const contractAddress = "0xAB1F03301987C0CDf8b55BBf424aE10656ca34e4"
 const contractABI = [
     {
         inputs: [
@@ -432,6 +432,36 @@ const contractABI = [
                 internalType: "string",
                 name: "",
                 type: "string",
+            },
+        ],
+        stateMutability: "view",
+        type: "function",
+    },
+    {
+        inputs: [],
+        name: "getUserServers",
+        outputs: [
+            {
+                components: [
+                    {
+                        internalType: "uint256",
+                        name: "serverId",
+                        type: "uint256",
+                    },
+                    {
+                        internalType: "string",
+                        name: "serverName",
+                        type: "string",
+                    },
+                    {
+                        internalType: "address",
+                        name: "Owner",
+                        type: "address",
+                    },
+                ],
+                internalType: "struct DecentralCord.Server[]",
+                name: "",
+                type: "tuple[]",
             },
         ],
         stateMutability: "view",

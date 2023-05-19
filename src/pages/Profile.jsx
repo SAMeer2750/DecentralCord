@@ -19,7 +19,7 @@ import steam from "./img/user-profile/steamlogo_1x.webp";
 import spotify from "./img/user-profile/spologo_1x.webp";
 import social_connected from "./img/user-profile/outline_social_verified_1x.webp";
 
-function Profile() {
+function Profile({account,user}) {
 	return (
 		<div className="profile_container">
 			<div className="profile-banner">
@@ -60,10 +60,10 @@ function Profile() {
 			<div className="profile-pic">
 				<img src={default_profile_pic} alt="" />
 				<div className="person-name">
-					<div className="person-id">ddevil__100</div>
+					<div className="person-id">{user}</div>
 					<div className="person_hash">#0000</div>
 				</div>
-				<div className="person-metamask_id">0xd12..76</div>
+				<div className="person-metamask_id">{account.slice(0, 6) + '...' + account.slice(38, 42)}</div>
 				<div className="social-text">SOCIAL</div>
 			</div>
 			<div className="social">
