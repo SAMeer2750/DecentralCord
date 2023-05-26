@@ -1,4 +1,4 @@
-const contractAddress = "0xAB1F03301987C0CDf8b55BBf424aE10656ca34e4"
+const contractAddress = "0x6A0b7d0990654648b4F2809B246370f042DF58D7"
 const contractABI = [
     {
         inputs: [
@@ -90,6 +90,11 @@ const contractABI = [
                 internalType: "address",
                 name: "Owner",
                 type: "address",
+            },
+            {
+                internalType: "string",
+                name: "serverUri",
+                type: "string",
             },
         ],
         stateMutability: "view",
@@ -243,6 +248,11 @@ const contractABI = [
                 name: "_serverName",
                 type: "string",
             },
+            {
+                internalType: "string",
+                name: "_serverUri",
+                type: "string",
+            },
         ],
         name: "createServer",
         outputs: [],
@@ -282,6 +292,11 @@ const contractABI = [
                         internalType: "address",
                         name: "Owner",
                         type: "address",
+                    },
+                    {
+                        internalType: "string",
+                        name: "serverUri",
+                        type: "string",
                     },
                 ],
                 internalType: "struct DecentralCord.Server[]",
@@ -457,6 +472,11 @@ const contractABI = [
                         internalType: "address",
                         name: "Owner",
                         type: "address",
+                    },
+                    {
+                        internalType: "string",
+                        name: "serverUri",
+                        type: "string",
                     },
                 ],
                 internalType: "struct DecentralCord.Server[]",
@@ -688,6 +708,11 @@ const contractABI = [
                 name: "Owner",
                 type: "address",
             },
+            {
+                internalType: "string",
+                name: "serverUri",
+                type: "string",
+            },
         ],
         stateMutability: "view",
         type: "function",
@@ -718,4 +743,4 @@ const contractABI = [
     },
 ]
 
-export {contractABI, contractAddress}
+export { contractABI, contractAddress }

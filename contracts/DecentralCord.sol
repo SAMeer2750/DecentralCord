@@ -26,6 +26,7 @@ contract DecentralCord{
         uint256 serverId;
         string serverName;
         address Owner;
+        string serverUri;
     }
 
     mapping(address => Profile) public user; // user address to profiles
@@ -69,10 +70,10 @@ contract DecentralCord{
         Users.push(Profile(msg.sender, _userName));
     }
 
-    function createServer(string memory _serverName)public{
+    function createServer(string memory _serverName, string memory _serverUri)public{
         address owner = msg.sender;
         uint256 serverId = serverCount;
-        Server memory server = Server(serverId, _serverName, owner); 
+        Server memory server = Server(serverId, _serverName, owner, _serverUri); 
         servers[serverId] = server;
         addModerators(msg.sender,serverId);
         allServers.push(server);

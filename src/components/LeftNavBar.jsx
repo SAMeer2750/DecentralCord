@@ -2,7 +2,7 @@ import React from "react";
 import { Link } from "react-router-dom";
 import "./LeftNavBar.css";
 
-function LeftNavBar() {
+function LeftNavBar({userServers}) {
   return (
     <div className="LeftNavBar">
       <div className="ContentBox">

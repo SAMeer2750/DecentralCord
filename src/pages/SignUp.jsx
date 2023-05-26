@@ -8,7 +8,7 @@ function SignUp({account,setAccount,contract, setContract}) {
     <div className="SignUp">
       <img className="SignUpBackground" src="./bg_img.png" alt="" />
       <div className="SignUpContent">
-        <SignUpCard account={account} setAccount={setAccount} contract={contract} setContract={setContract}/>
+        <SignUpCard account={account} setAccount={setAccount} contract={contract}/>
       </div>
     </div>
   );

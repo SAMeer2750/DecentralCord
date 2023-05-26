@@ -69,12 +69,13 @@ function App() {
                                 setUSer={setUser}
                                 getUserData={getUserData}
                                 getUserServers={getUserServers}
+                                userServers={userServers}
                             />
                         }
                     />
                     <Route
                         path="JoinServer"
-                        element={<JoinServer account={account} contract={contract} user={user} />}
+                        element={<JoinServer account={account} contract={contract} user={user} provider={provider}/>}
                     />
                     <Route path="Profile" element={<Profile account={account} user={user} />} />
                 </Routes>
